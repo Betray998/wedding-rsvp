@@ -23,29 +23,46 @@ export default function WeddingRSVPPage() {
       [e.target.name]: e.target.value,
     });
   };
-
-  const handleSubmit = () => {
-  const form = document.createElement("form");
-  form.method = "POST";
-  form.action =
-    "https://script.google.com/macros/s/AKfycbz_gM7VrmKq2QsB6JKSuQU7rvlM4VhMEb_HFlyIB9rXn7glcbxGP_W8zynEd3nSmTDuFw/exec";
-
-  Object.entries(formData).forEach(([key, value]) => {
-    const input = document.createElement("input");
-    input.type = "hidden";
-    input.name = key;
-    input.value = value;
-    form.appendChild(input);
-  });
-
-  document.body.appendChild(form);
-  form.submit();
-
-  alert("提交成功！感謝您的填寫 💖");
-    } catch (error) {
-      console.error(error);
-      alert("提交失敗，請稍後再試");
+  const handleSubmit = async () => {
+   try {
+    if (!formData.name || !formData.phone) {
+      alert("請填寫姓名與電話");
+      return;
     }
+
+    await fetch(
+      "https://script.google.com/macros/s/AKfycbzAfy0avs38kNvYw27ugXhbj7_2wq-m7cTPCKS2qLwITgM3Au13PmHznWxPZhlH6NC2/exec",
+      {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      }
+    );
+
+    alert("提交成功！感謝您的填寫 💖");
+
+    setFormData({
+      name: "",
+      phone: "",
+      attendance: "",
+      attendees: "",
+      relation: "",
+      meal: "",
+      specialMeal: "",
+      childSeat: "",
+      children: "",
+      blessing: "",
+      note: "",
+    });
+
+  } catch (error) {
+    console.error(error);
+    alert("提交失敗，請稍後再試");
+  }
+
   };
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const weddingMusic = "/music/1.CNBLUE(鄭容和)-Would you marry me.mp3";
