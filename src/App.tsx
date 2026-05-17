@@ -213,7 +213,7 @@ export default function WeddingRSVPPage() {
                 </label>
               ))}
             </div>
-          </div> 
+          </div>
 
           <div>
             <label className={labelClass}>11. 是否會攜帶兒童同行？</label>
