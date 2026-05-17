@@ -26,7 +26,7 @@ export default function WeddingRSVPPage() {
 
   const handleSubmit = async () => {
     try {
-      await fetch("https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycbwabbdbwj7M3Z0baA56poeIa7Cn-JJbpFadHyGb3_GGsMH-7Vmn1J371E2VppJf954qhw/exec/exec", {
+      await fetch("https://script.google.com/macros/s/AKfycbwabbdbwj7M3Z0baA56poeIa7Cn-JJbpFadHyGb3_GGsMH-7Vmn1J371E2VppJf954qhw/exec", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
