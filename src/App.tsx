@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from "react";
+import Countdown from "./components/Countdown";
+import QRCodeShare from "./components/QRCodeShare";
 
 export default function WeddingRSVPPage() {
   const [formData, setFormData] = useState({
@@ -42,7 +44,8 @@ export default function WeddingRSVPPage() {
       }
     );
 
-    alert("提交成功！感謝您的填寫 💖");
+    //alert("提交成功！感謝您的填寫 💖");
+	window.location.href = "/success";
 
     setFormData({
       name: "",
@@ -89,6 +92,8 @@ export default function WeddingRSVPPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-rose-50 via-white to-amber-50 text-gray-800">
       {/* Hero */}
+	  <Countdown />
+	  <QRCodeShare />
       <section className="relative overflow-hidden">
         <div className="max-w-5xl mx-auto px-6 py-16 md:py-24 text-center">
           <p className="tracking-[0.35em] text-rose-400 text-sm mb-4">
