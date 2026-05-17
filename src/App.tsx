@@ -1,6 +1,45 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function WeddingRSVPPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    attendance: "",
+    attendees: "",
+    relation: "",
+    meal: "",
+    specialMeal: "",
+    childSeat: "",
+    children: "",
+    blessing: "",
+    note: "",
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async () => {
+    try {
+      await fetch("https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycbwabbdbwj7M3Z0baA56poeIa7Cn-JJbpFadHyGb3_GGsMH-7Vmn1J371E2VppJf954qhw/exec/exec", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      alert("提交成功！感謝您的填寫 💖");
+    } catch (error) {
+      console.error(error);
+      alert("提交失敗，請稍後再試");
+    }
+  };
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const weddingMusic = "/music/1.CNBLUE(鄭容和)-Would you marry me.mp3";
   const sectionClass = "bg-white rounded-3xl shadow-lg p-6 md:p-8 space-y-5";
@@ -107,12 +146,12 @@ export default function WeddingRSVPPage() {
 
           <div>
             <label className={labelClass}>1. 賓客姓名</label>
-            <input type="text" className={inputClass} placeholder="請輸入姓名" />
+            <input type="text" name="name" value={formData.name} onChange={handleChange} className={inputClass} placeholder="請輸入姓名" />
           </div>
 
           <div>
             <label className={labelClass}>2. 聯絡電話</label>
-            <input type="tel" className={inputClass} placeholder="請輸入聯絡電話" />
+            <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className={inputClass} placeholder="請輸入聯絡電話" />
           </div>
         </section>
 
@@ -128,7 +167,7 @@ export default function WeddingRSVPPage() {
             <div className="grid gap-3 md:grid-cols-3">
               {['會出席', '無法出席'].map((item) => (
                 <label key={item} className="border rounded-2xl p-4 hover:border-rose-300 cursor-pointer flex items-center gap-3">
-                  <input type="radio" name="attendance" />
+                  <input type="radio" name="attendance" value={item} checked={formData.attendance === item} onChange={handleChange} />
                   <span>{item}</span>
                 </label>
               ))}
@@ -137,7 +176,7 @@ export default function WeddingRSVPPage() {
 
           <div>
             <label className={labelClass}>4. 出席人數</label>
-            <select className={inputClass}>
+            <select name="attendees" value={formData.attendees} onChange={handleChange} className={inputClass}>
               <option>請選擇</option>
               <option>1 人</option>
               <option>2 人</option>
@@ -159,7 +198,7 @@ export default function WeddingRSVPPage() {
             <div className="grid gap-3 md:grid-cols-2">
               {['新郎碩班同學','新郎大學同學','新郎高中同學','新郎國中同學','新郎國小同學','新郎必勝客同事','新娘朋朋', '其他'].map((item) => (
                 <label key={item} className="border rounded-2xl p-4 hover:border-rose-300 cursor-pointer flex items-center gap-3">
-                  <input type="radio" name="relation" />
+                  <input type="radio" name="relation" value={item} checked={formData.relation === item} onChange={handleChange} />
                   <span>{item}</span>
                 </label>
               ))}
@@ -179,7 +218,7 @@ export default function WeddingRSVPPage() {
             <div className="space-y-3">
               {['葷食', '素食', '其他特殊飲食需求'].map((item) => (
                 <label key={item} className={radioClass}>
-                  <input type="radio" name="meal" />
+                  <input type="radio" name="meal" value={item} checked={formData.meal === item} onChange={handleChange} />
                   <span>{item}</span>
                 </label>
               ))}
@@ -189,6 +228,9 @@ export default function WeddingRSVPPage() {
           <div>
             <label className={labelClass}>8. 是否有食物過敏或特殊飲食需求？</label>
             <textarea
+              name="specialMeal"
+              value={formData.specialMeal}
+              onChange={handleChange}
               className={inputClass}
               rows={3}
               placeholder="請填寫特殊需求"
@@ -208,7 +250,7 @@ export default function WeddingRSVPPage() {
             <div className="space-y-3">
               {['不需要', '需要 1 張', '需要 2 張以上'].map((item) => (
                 <label key={item} className={radioClass}>
-                  <input type="radio" name="childSeat" />
+                  <input type="radio" name="childSeat" value={item} checked={formData.childSeat === item} onChange={handleChange} />
                   <span>{item}</span>
                 </label>
               ))}
@@ -220,7 +262,7 @@ export default function WeddingRSVPPage() {
             <div className="flex gap-6">
               {['是', '否'].map((item) => (
                 <label key={item} className={radioClass}>
-                  <input type="radio" name="children" />
+                  <input type="radio" name="children" value={item} checked={formData.children === item} onChange={handleChange} />
                   <span>{item}</span>
                 </label>
               ))}
@@ -238,6 +280,9 @@ export default function WeddingRSVPPage() {
           <div>
             <label className={labelClass}>13. 想對新人說的祝福話語</label>
             <textarea
+              name="blessing"
+              value={formData.blessing}
+              onChange={handleChange}
               className={inputClass}
               rows={6}
               placeholder="祝福新人永浴愛河、幸福美滿⋯⋯"
@@ -247,6 +292,9 @@ export default function WeddingRSVPPage() {
           <div>
             <label className={labelClass}>14. 其他想告知新人的事項</label>
             <textarea
+              name="note"
+              value={formData.note}
+              onChange={handleChange}
               className={inputClass}
               rows={4}
               placeholder="其他備註事項"
@@ -256,7 +304,10 @@ export default function WeddingRSVPPage() {
 
         {/* Submit */}
         <section className="text-center pt-4">
-          <button className="px-10 py-4 rounded-full bg-gray-900 text-white text-lg font-medium shadow-lg hover:scale-105 transition-transform">
+          <button
+            onClick={handleSubmit}
+            className="px-10 py-4 rounded-full bg-gray-900 text-white text-lg font-medium shadow-lg hover:scale-105 transition-transform"
+          >
             提交問卷
           </button>
 
