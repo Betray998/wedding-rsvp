@@ -24,20 +24,24 @@ export default function WeddingRSVPPage() {
     });
   };
 
-  const handleSubmit = async () => {
-    try {
-      await fetch(
-  "https://script.google.com/macros/s/AKfycbz_gM7VrmKq2QsB6JKSuQU7rvlM4VhMEb_HFlyIB9rXn7glcbxGP_W8zynEd3nSmTDuFw/exec",
-  {
-    method: "POST",
-    body: new URLSearchParams(formData).toString(),
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-  }
-);
+  const handleSubmit = () => {
+  const form = document.createElement("form");
+  form.method = "POST";
+  form.action =
+    "https://script.google.com/macros/s/AKfycbz_gM7VrmKq2QsB6JKSuQU7rvlM4VhMEb_HFlyIB9rXn7glcbxGP_W8zynEd3nSmTDuFw/exec";
 
-      alert("提交成功！感謝您的填寫 💖");
+  Object.entries(formData).forEach(([key, value]) => {
+    const input = document.createElement("input");
+    input.type = "hidden";
+    input.name = key;
+    input.value = value;
+    form.appendChild(input);
+  });
+
+  document.body.appendChild(form);
+  form.submit();
+
+  alert("提交成功！感謝您的填寫 💖");
     } catch (error) {
       console.error(error);
       alert("提交失敗，請稍後再試");
