@@ -26,13 +26,16 @@ export default function WeddingRSVPPage() {
 
   const handleSubmit = async () => {
     try {
-      await fetch("https://script.google.com/macros/s/AKfycbz_gM7VrmKq2QsB6JKSuQU7rvlM4VhMEb_HFlyIB9rXn7glcbxGP_W8zynEd3nSmTDuFw/exec", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      await fetch(
+  "https://script.google.com/macros/s/AKfycbz_gM7VrmKq2QsB6JKSuQU7rvlM4VhMEb_HFlyIB9rXn7glcbxGP_W8zynEd3nSmTDuFw/exec",
+  {
+    method: "POST",
+    body: new URLSearchParams(formData).toString(),
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+  }
+);
 
       alert("提交成功！感謝您的填寫 💖");
     } catch (error) {
