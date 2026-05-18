@@ -1,74 +1,69 @@
-import { Link } from "react-router-dom";
-
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-rose-50 via-white to-amber-50 flex items-center justify-center px-6">
-      <div className="max-w-2xl w-full text-center">
-        <p className="tracking-[0.35em] text-rose-400 text-sm mb-4">
-          WEDDING INVITATION
-        </p>
+    <div className="relative min-h-screen overflow-hidden">
+      
+      {/* 🖼 背景圖片（最底層） */}
+      <div className="absolute inset-0 -z-10">
+        <img
+          src="/images/F83459-0056.jpg"
+          className="w-full h-full object-cover"
+        />
+      </div>
 
-        <h1 className="text-5xl md:text-6xl font-bold text-gray-800 mb-6 leading-tight">
-          我們要結婚了 💍
-        </h1>
+      {/* 🌫 遮罩層 */}
+      <div className="absolute inset-0 bg-white/60 -z-10" />
 
-        <p className="text-gray-600 text-lg leading-relaxed mb-12">
-          誠摯邀請您參與我們人生中最重要的一天，
-          期待與您一起分享幸福與喜悅。
-        </p>
+      {/* 📄 內容層（最上） */}
+      <div className="relative z-20 flex items-center justify-center min-h-screen px-6">
+        
+        <div className="max-w-xl w-full text-center text-black">
 
-        <div className="space-y-5">
-		  <div className="w-full rounded-3xl bg-white/80 backdrop-blur border border-rose-100 shadow-lg px-8 py-6">
-			<div className="text-2xl font-bold text-gray-800 mb-2">
-			🕰 婚宴時間
-			</div>
+          <p className="tracking-[0.3em] text-gray-600 text-sm mb-6">
+            WEDDING INVITATION
+          </p>
 
-			<p className="text-gray-600 text-lg">
-			2026 / 09 / 12（六）晚上 6:00
-			</p>
-		</div>
-          {/* 宴客地點 */}
-          <a
-            href="https://maps.app.goo.gl/WoNAN12mBQn1tGLU8"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block w-full rounded-3xl bg-white/80 backdrop-blur border border-rose-100 shadow-lg px-8 py-6 hover:scale-[1.02] transition-transform"
-          >
-            <div className="text-2xl font-bold text-gray-800 mb-2">
+          <h1 className="text-5xl md:text-6xl font-serif text-black mb-6 leading-tight">
+            我們要結婚了
+          </h1>
+
+          <p className="text-gray-700 text-lg leading-relaxed mb-12">
+            誠摯邀請您參與我們人生中最重要的一天，
+            期待與您一同見證幸福時刻。
+          </p>
+
+          {/* 時間 */}
+          <div className="border-t border-b py-6 mb-10 text-gray-800">
+            <p className="text-sm tracking-[0.2em] text-gray-500 mb-2">
+              CEREMONY TIME
+            </p>
+            <p className="text-lg font-medium">
+              2026 / 09 / 12（六）18:00
+            </p>
+          </div>
+
+          <div className="space-y-4">
+
+            <a
+              href="https://maps.app.goo.gl/WoNAN12mBQn1tGLU8"
+              target="_blank"
+              className="block border border-gray-300 py-4 rounded-xl hover:border-gray-500 transition"
+            >
               📍 宴客地點
-            </div>
+            </a>
 
-            <p className="text-gray-500">
-              點擊查看 Google Map 導航
-            </p>
-          </a>
-
-          {/* 出席調查 */}
-          <Link
-            to="/rsvp"
-            className="block w-full rounded-3xl bg-rose-500 text-white shadow-lg px-8 py-6 hover:scale-[1.02] transition-transform"
-          >
-            <div className="text-2xl font-bold mb-2">
+            <a
+              href="/rsvp"
+              className="block bg-black text-white py-4 rounded-xl hover:opacity-80 transition"
+            >
               💌 出席調查
-            </div>
+            </a>
 
-            <p className="text-rose-100">
-              填寫婚禮 RSVP 問卷
-            </p>
-          </Link>
+            <button className="block w-full border border-gray-300 py-4 rounded-xl text-gray-500">
+              📸 婚紗照（即將開放）
+            </button>
 
-          {/* 婚紗照分享 */}
-          <button
-            className="block w-full rounded-3xl bg-white/80 backdrop-blur border border-rose-100 shadow-lg px-8 py-6 hover:scale-[1.02] transition-transform"
-          >
-            <div className="text-2xl font-bold text-gray-800 mb-2">
-              📸 婚紗照分享
-            </div>
+          </div>
 
-            <p className="text-gray-500">
-              即將開放，敬請期待
-            </p>
-          </button>
         </div>
       </div>
     </div>
