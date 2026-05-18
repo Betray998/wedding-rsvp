@@ -6,6 +6,7 @@ export default function WeddingRSVPPage() {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
+	mail: "",
     attendance: "",
     attendees: "",
     relation: "",
