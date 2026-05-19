@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { initMusic, playMusic } from "../utils/musicPlayer";
 
 export default function Home() {
 	
