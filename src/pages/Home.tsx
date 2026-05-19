@@ -18,7 +18,7 @@ export default function Home() {
         
         <div className="max-w-xl w-full text-center text-black">
 
-          <p className="text-6xl md:text-7xl handwriting text-black mb-6 leading-tight">
+          <p className="text-6xl md:text-5xl handwriting text-black mb-2 leading-tight">
             Wedding Invitation
           </p>
 
@@ -26,8 +26,8 @@ export default function Home() {
             我們要結婚了
           </h1>
 
-          <p className="text-xl md:text-3xl handwriting-cn text-black mb-12 leading-tight">
-            誠摯邀請您參與我們人生中最重要的一天，
+          <p className="text-xl md:text-4xl handwriting-cn text-black mb-12 leading-tight">
+            誠摯邀請您參與我們人生中最重要的一天， 
             期待與您一同見證幸福時刻。
           </p>
 
@@ -36,10 +36,10 @@ export default function Home() {
             <p className="text-sm tracking-[0.2em] text-gray-500 mb-2">
               CEREMONY TIME & LOCATION
             </p>
-            <p className="text-lg font-medium">
+            <p className="text-xl md:text-3xl handwriting-cn text-black mb-0.1 leading-tight">
               2026 / 09 / 12（六）18:00
             </p>
-			<p className="text-lg font-medium">
+			<p className="text-xl md:text-3xl handwriting-cn text-black mb-0.1 leading-tight">
               藏鮮閣 新竹縣竹北市文興路二段378號
             </p>
           </div>
