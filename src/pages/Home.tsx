@@ -122,7 +122,6 @@ export default function Home() {
             <a
 			  href="/rsvp"
 			  onClick={() => {
-				const music = initMusic("/music/1.CNBLUE(鄭容和)-Would you marry me.mp3");
 				playMusic();
 			  }}
 			  className="block bg-gray-800 text-white py-4 rounded-xl"
