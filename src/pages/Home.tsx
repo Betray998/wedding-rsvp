@@ -1,4 +1,37 @@
+import { useEffect, useState } from "react";
+
 export default function Home() {
+	
+  const targetDate = new Date("2026-09-12T18:00:00");
+
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = targetDate.getTime() - now;
+
+      if (distance <= 0) {
+        clearInterval(timer);
+        return;
+      }
+
+      setTimeLeft({
+        days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((distance / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((distance / (1000 * 60)) % 60),
+        seconds: Math.floor((distance / 1000) % 60),
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div className="relative min-h-screen overflow-hidden">
 
@@ -18,25 +51,50 @@ export default function Home() {
 
         <div className="max-w-xl w-full text-center text-black">
 
-          {/* 英文標題 */}
+          {/* 💍 倒數計時（已正確放入 return） */}
+          <div className="mb-6 text-center">
+            <p className="text-xs tracking-[0.3em] text-gray-500 mb-3">
+              COUNTDOWN TO WEDDING
+            </p>
+
+            <div className="flex justify-center gap-3 sm:gap-5 text-black">
+              <div className="text-center">
+                <p className="text-2xl sm:text-3xl font-light">{timeLeft.days}</p>
+                <p className="text-[10px] sm:text-xs text-gray-500">DAYS</p>
+              </div>
+
+              <div className="text-center">
+                <p className="text-2xl sm:text-3xl font-light">{timeLeft.hours}</p>
+                <p className="text-[10px] sm:text-xs text-gray-500">HRS</p>
+              </div>
+
+              <div className="text-center">
+                <p className="text-2xl sm:text-3xl font-light">{timeLeft.minutes}</p>
+                <p className="text-[10px] sm:text-xs text-gray-500">MIN</p>
+              </div>
+
+              <div className="text-center">
+                <p className="text-2xl sm:text-3xl font-light">{timeLeft.seconds}</p>
+                <p className="text-[10px] sm:text-xs text-gray-500">SEC</p>
+              </div>
+            </div>
+          </div>
+
+          {/* 以下全部保持你原本內容 */}
           <p className="text-4xl sm:text-4xl md:text-6xl handwriting text-black mb-2 leading-tight">
             Wedding Invitation
           </p>
 
-          {/* 中文主標 */}
           <h1 className="text-6xl sm:text-6xl md:text-7xl handwriting-cn text-black mb-5 leading-snug">
             我們要結婚了
           </h1>
 
-          {/* 內文 */}
           <p className="text-base sm:text-lg md:text-xl handwriting-cn text-black mb-10 leading-relaxed px-12 sm:px-0">
             誠摯邀請您參與我們人生中最重要的一天，
             期待與您一同見證幸福時刻。
           </p>
 
-          {/* 時間區塊 */}
           <div className="border-t border-b py-5 sm:py-6 mb-8 sm:mb-10 text-gray-800">
-
             <p className="text-xs sm:text-sm tracking-[0.2em] text-gray-500 mb-3">
               CEREMONY TIME & LOCATION
             </p>
@@ -48,10 +106,8 @@ export default function Home() {
             <p className="text-lg sm:text-2xl md:text-3xl handwriting-cn text-black leading-snug">
               藏鮮閣 新竹縣竹北市文興路二段378號
             </p>
-
           </div>
 
-          {/* 按鈕區 */}
           <div className="space-y-3 sm:space-y-4">
 
             <a
