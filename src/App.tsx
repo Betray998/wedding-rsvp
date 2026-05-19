@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from "react";
-import Countdown from "./components/Countdown";
+//import Countdown from "./components/Countdown";
 import QRCodeShare from "./components/QRCodeShare";
+import { initMusic } from "./utils/musicPlayer";
 
 export default function WeddingRSVPPage() {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
-	mail: "",
+    mail: "",
     attendance: "",
     attendees: "",
     relation: "",
@@ -18,6 +19,13 @@ export default function WeddingRSVPPage() {
     note: "",
   });
 
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  // ⭐⭐⭐ 正確位置：放在 component 裡 ⭐⭐⭐
+  useEffect(() => {
+    initMusic("/music/1.CNBLUE(鄭容和)-Would you marry me.mp3");
+  }, []);
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
@@ -26,82 +34,78 @@ export default function WeddingRSVPPage() {
       [e.target.name]: e.target.value,
     });
   };
+
   const handleSubmit = async () => {
-   try {
-    if (!formData.name || !formData.phone || !formData.mail) {
-      alert("請填寫姓名,電話和mail");
-      return;
-    }
-
-    await fetch(
-      "https://script.google.com/macros/s/AKfycbzAfy0avs38kNvYw27ugXhbj7_2wq-m7cTPCKS2qLwITgM3Au13PmHznWxPZhlH6NC2/exec",
-      {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+    try {
+      if (!formData.name || !formData.phone || !formData.mail) {
+        alert("請填寫姓名,電話和mail");
+        return;
       }
-    );
 
-    //alert("提交成功！感謝您的填寫 💖");
-	window.location.href = "/success";
-
-    setFormData({
-      name: "",
-      phone: "",
-      mail: "",
-	  attendance: "",
-      attendees: "",
-      relation: "",
-      meal: "",
-      specialMeal: "",
-      childSeat: "",
-      children: "",
-      blessing: "",
-      note: "",
-    });
-
-  } catch (error) {
-    console.error(error);
-    alert("提交失敗，請稍後再試");
-  }
-
-  };
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-  const weddingMusic = "/music/1.CNBLUE(鄭容和)-Would you marry me.mp3";
-  const sectionClass = "bg-white rounded-3xl shadow-lg p-6 md:p-8 space-y-5";
-  const labelClass = "block text-sm font-medium text-gray-700 mb-2";
-  const inputClass = "w-full rounded-2xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-rose-300";
-  const radioClass = "flex items-center gap-2 text-gray-700";
-
-  useEffect(() => {
-    const playMusic = async () => {
-      try {
-        if (audioRef.current) {
-          audioRef.current.muted = true;
+      await fetch(
+        "https://script.google.com/macros/s/AKfycbzAfy0avs38kNvYw27ugXhbj7_2wq-m7cTPCKS2qLwITgM3Au13PmHznWxPZhlH6NC2/exec",
+        {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
         }
-        await audioRef.current?.play();
-      } catch (error) {
-        console.log("瀏覽器阻擋自動播放", error);
-      }
-    };
+      );
 
-    playMusic();
-  }, []);
+      window.location.href = "/success";
+
+      setFormData({
+        name: "",
+        phone: "",
+        mail: "",
+        attendance: "",
+        attendees: "",
+        relation: "",
+        meal: "",
+        specialMeal: "",
+        childSeat: "",
+        children: "",
+        blessing: "",
+        note: "",
+      });
+    } catch (error) {
+      console.error(error);
+      alert("提交失敗，請稍後再試");
+    }
+  };
+
+  const weddingMusic =
+    "/music/1.CNBLUE(鄭容和)-Would you marry me.mp3";
+
+  const sectionClass =
+    "bg-white rounded-3xl shadow-lg p-6 md:p-8 space-y-5";
+  const labelClass =
+    "block text-sm font-medium text-gray-700 mb-2";
+  const inputClass =
+    "w-full rounded-2xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-rose-300";
+  const radioClass =
+    "flex items-center gap-2 text-gray-700";
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-rose-50 via-white to-amber-50 text-gray-800">
+    <div className="min-h-screen relative text-gray-900">
+	<div className="absolute inset-0 -z-10">
+	<img
+      src="/images/F83459-0056.jpg"
+	  className="w-full h-full object-cover"
+	/>
+	<div className="absolute inset-0 bg-white/70" />
+	</div>
       {/* Hero */}
-	  <Countdown />
+
 	  <QRCodeShare />
       <section className="relative overflow-hidden">
         <div className="max-w-5xl mx-auto px-6 py-16 md:py-24 text-center">
           <p className="tracking-[0.35em] text-rose-400 text-sm mb-4">
             WEDDING RSVP
           </p>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+          <h1 className="text-5xl md:text-6xl font-serif font-light tracking-wide mb-6 leading-tight">
             婚禮出席調查問卷
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
@@ -109,31 +113,9 @@ export default function WeddingRSVPPage() {
             為了方便安排座位與餐點，請協助填寫以下問卷。
           </p>
 
-          <div className="mt-8 max-w-2xl mx-auto bg-white/80 backdrop-blur rounded-3xl shadow-lg p-6 text-left space-y-4 border border-rose-100">
-            <div>
-              <p className="text-sm tracking-[0.2em] text-rose-400 mb-1">婚宴時間</p>
-              <p className="text-lg font-semibold">2026 / 09 / 12（六）晚上 6:00</p>
-            </div>
-
-            <div>
-              <p className="text-sm tracking-[0.2em] text-rose-400 mb-1">婚宴地點</p>
-              <p className="text-lg font-semibold">藏鮮閣</p>
-              <p className="text-gray-600">302 新竹縣竹北市隘口里文興路二段378號</p>
-            </div>
-
-            <a
-              href="https://maps.app.goo.gl/WoNAN12mBQn1tGLU8"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-rose-500 font-medium hover:underline"
-            >
-              查看 Google 地圖 →
-            </a>
-          </div>
-
           <div className="mt-8 flex flex-col items-center gap-5">
-            <div className="w-full max-w-md bg-white/80 backdrop-blur rounded-3xl shadow-lg border border-rose-100 p-4">
-              <p className="text-sm tracking-[0.2em] text-rose-400 mb-3 text-center">
+            <div className="w-full max-w-md bg-white/70 backdrop-blur rounded-2xl shadow-lg border border-rose-200 p-4">
+              <p className="text-sm tracking-[0.2em] text-gray-500 tracking-[0.3em] mb-3 text-center">
                 WEDDING MUSIC
               </p>
 
@@ -155,12 +137,6 @@ export default function WeddingRSVPPage() {
               <p className="text-xs text-gray-500 mt-3 text-center break-all">
                 播放歌曲：CNBLUE(鄭容和) - Would you marry me
               </p>
-            </div>
-
-            <div className="mt-2 flex justify-center">
-              <button className="px-8 py-4 rounded-full bg-rose-500 text-white font-medium shadow-lg hover:scale-105 transition-transform">
-                開始填寫
-              </button>
             </div>
           </div>
         </div>

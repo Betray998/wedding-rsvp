@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { initMusic, playMusic } from "../utils/musicPlayer";
 
 export default function Home() {
 	
@@ -119,11 +120,15 @@ export default function Home() {
             </a>
 
             <a
-              href="/rsvp"
-              className="block bg-gray-800 text-white py-3 sm:py-4 rounded-xl hover:bg-gray-700 transition text-sm sm:text-base"
-            >
-              💌 出席調查
-            </a>
+			  href="/rsvp"
+			  onClick={() => {
+				const music = initMusic("/music/1.CNBLUE(鄭容和)-Would you marry me.mp3");
+				playMusic();
+			  }}
+			  className="block bg-gray-800 text-white py-4 rounded-xl"
+			>
+			  💌 出席調查
+			</a>
 
             <button className="block w-full border bg-gray-800 py-3 sm:py-4 rounded-xl text-white text-sm sm:text-base">
               📸 婚紗照（即將開放）
