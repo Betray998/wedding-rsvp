@@ -109,6 +109,12 @@ export default function Home() {
           </div>
 
           <div className="space-y-3 sm:space-y-4">
+			<a
+			  href="/rsvp"
+			  className="block bg-gray-800 text-white py-4 rounded-xl"
+			>
+			  💌 出席調查
+			</a>
 
             <a
               href="https://maps.app.goo.gl/WoNAN12mBQn1tGLU8"
@@ -117,17 +123,12 @@ export default function Home() {
             >
               📍 宴客地點
             </a>
-
-            <a
-			  href="/rsvp"
-			  onClick={() => {
-				const audio = new Audio("/music/1.CNBLUE(鄭容和)-Would you marry me.mp3");
-				audio.loop = true;
-				audio.play().catch(() => {});
-			  }}
-			  className="block bg-gray-800 text-white py-4 rounded-xl"
+			
+			<a
+			  href="/traffic"
+			  className="block bg-gray-800 text-white py-3 sm:py-4 rounded-xl hover:bg-gray-700 transition text-sm sm:text-base"
 			>
-			  💌 出席調查
+			  🚗 交通指南
 			</a>
 
             <button className="block w-full border bg-gray-800 py-3 sm:py-4 rounded-xl text-white text-sm sm:text-base">

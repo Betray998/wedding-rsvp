@@ -1,7 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 //import Countdown from "./components/Countdown";
-import QRCodeShare from "./components/QRCodeShare";
-import { initMusic } from "./utils/musicPlayer";
+//import QRCodeShare from "./components/QRCodeShare";
 
 export default function WeddingRSVPPage() {
   const [formData, setFormData] = useState({
@@ -19,12 +18,7 @@ export default function WeddingRSVPPage() {
     note: "",
   });
 
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-
   // ⭐⭐⭐ 正確位置：放在 component 裡 ⭐⭐⭐
-  useEffect(() => {
-    initMusic("/music/1.CNBLUE(鄭容和)-Would you marry me.mp3");
-  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -76,9 +70,6 @@ export default function WeddingRSVPPage() {
     }
   };
 
-  const weddingMusic =
-    "/music/1.CNBLUE(鄭容和)-Would you marry me.mp3";
-
   const sectionClass =
     "bg-white rounded-3xl shadow-lg p-6 md:p-8 space-y-5";
   const labelClass =
@@ -88,59 +79,38 @@ export default function WeddingRSVPPage() {
   const radioClass =
     "flex items-center gap-2 text-gray-700";
 
-  return (
-    <div className="min-h-screen relative text-gray-900">
-	<div className="absolute inset-0 -z-10">
-	<img
-      src="/images/F83459-0056.jpg"
-	  className="w-full h-full object-cover"
-	/>
-	<div className="absolute inset-0 bg-white/70" />
+return (
+  <div className="min-h-screen relative text-gray-900 overflow-x-hidden">
+
+    {/* ✅ 背景（手機/桌機都置中穩定） */}
+    <div className="fixed inset-0 -z-10 overflow-hidden">
+	  <img
+      src="/images/F83459-0092.jpg"
+      className="w-full h-full object-cover object-center"
+	  />
+
+	  <div className="absolute inset-0 bg-white/70" />
 	</div>
-      {/* Hero */}
 
-	  <QRCodeShare />
-      <section className="relative overflow-hidden">
-        <div className="max-w-5xl mx-auto px-6 py-16 md:py-24 text-center">
-          <p className="tracking-[0.35em] text-rose-400 text-sm mb-4">
-            WEDDING RSVP
-          </p>
-          <h1 className="text-5xl md:text-6xl font-serif font-light tracking-wide mb-6 leading-tight">
-            婚禮出席調查問卷
-          </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            親愛的朋友您好，誠摯邀請您參加我們的婚禮！
-            為了方便安排座位與餐點，請協助填寫以下問卷。
-          </p>
+    {/* Hero */}
+    <section className="relative overflow-hidden">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-24 text-center">
 
-          <div className="mt-8 flex flex-col items-center gap-5">
-            <div className="w-full max-w-md bg-white/70 backdrop-blur rounded-2xl shadow-lg border border-rose-200 p-4">
-              <p className="text-sm tracking-[0.2em] text-gray-500 tracking-[0.3em] mb-3 text-center">
-                WEDDING MUSIC
-              </p>
+        <p className="tracking-[0.25em] sm:tracking-[0.35em] text-rose-400 text-xs sm:text-sm mb-3 sm:mb-4">
+          WEDDING RSVP
+        </p>
 
-              <div className="overflow-hidden rounded-2xl bg-rose-50 p-4">
-                <audio
-                  ref={audioRef}
-                  controls
-                  autoPlay
-                  loop
-                  playsInline
-                  muted
-                  className="w-full"
-                >
-                  <source src={weddingMusic} type="audio/mpeg" />
-                  您的瀏覽器不支援音樂播放。
-                </audio>
-              </div>
+        <h1 className="handwriting-cn text-3xl sm:text-5xl md:text-7xl font-light leading-snug mb-4 sm:mb-6">
+          婚禮出席調查問卷
+        </h1>
 
-              <p className="text-xs text-gray-500 mt-3 text-center break-all">
-                播放歌曲：CNBLUE(鄭容和) - Would you marry me
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+        <p className="handwriting-cn text-sm sm:text-lg md:text-2xl text-gray-700 leading-relaxed px-2 sm:px-6 md:px-12 mb-8 sm:mb-1">
+          親愛的朋友您好，誠摯邀請您參加我們的婚禮！
+          為了方便安排座位與餐點，請協助填寫以下問卷。
+        </p>
+
+      </div>
+    </section>
 
       {/* Form */}
       <main className="max-w-4xl mx-auto px-6 pb-20 space-y-8">
