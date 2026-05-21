@@ -76,11 +76,13 @@ export default function WeddingRSVPPage() {
         mail: "",
         attendance: "",
         attendees: "",
+		attendeesOther: "",
         relation: "",
         meal: "",
         specialMeal: "",
 		children: "",
         childSeat: "",
+		childSeatOther: "",
         blessing: "",
         note: "",
       });
