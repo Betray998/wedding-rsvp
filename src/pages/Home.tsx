@@ -111,7 +111,7 @@ export default function Home() {
           <div className="space-y-3 sm:space-y-4">
 			<a
 			  href="/rsvp"
-			  className="block bg-gray-800 text-white py-4 rounded-xl"
+			  className="block bg-gray-800 text-white py-3 sm:py-4 rounded-xl hover:bg-gray-700 transition text-sm sm:text-base"
 			>
 			  💌 出席調查
 			</a>
