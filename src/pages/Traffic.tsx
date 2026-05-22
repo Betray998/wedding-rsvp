@@ -24,11 +24,11 @@ export default function Traffic() {
               TRAFFIC GUIDE
             </p>
 
-            <h1 className="text-4xl sm:text-4xl md:text-6xl handwriting-cn text-black mb-2 leading-tight">
+            <h1 className="text-5xl sm:text-4xl md:text-6xl handwriting-cn text-black mb-2 leading-tight">
               交通指南
             </h1>
 
-            <p className="text-4x1 sm:text-4x1 md:text-4xl handwriting-cn text-black leading-relaxed">
+            <p className="text-lg sm:text-4xl md:text-4xl handwriting-cn text-black leading-relaxed">
               以下提供前往藏鮮閣的交通方式 ✨
             </p>
           </div>

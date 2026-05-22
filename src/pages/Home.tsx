@@ -89,9 +89,9 @@ export default function Home() {
             我們要結婚了
           </h1>
 
-          <p className="text-lg sm:text-lg md:text-xl handwriting-cn text-black mb-10 leading-relaxed px-12 sm:px-0">
-            誠摯邀請您參與我們人生中最重要的一天，
-            期待與您一同見證幸福時刻。
+          <p className="text-lg sm:text-lg md:text-xl handwriting-cn text-black mb-5 leading-relaxed px-12 sm:px-0">
+            誠摯邀請您參與我們人生中最重要的一天，<br />
+			期待與您一同見證幸福時刻。
           </p>
 
           <div className="border-t border-b py-5 sm:py-6 mb-8 sm:mb-10 text-gray-800">

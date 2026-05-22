@@ -122,12 +122,12 @@ return (
           WEDDING RSVP
         </p>
 
-        <h1 className="handwriting-cn text-3xl sm:text-5xl md:text-7xl font-light leading-snug mb-4 sm:mb-6">
+        <h1 className="handwriting-cn text-4xl sm:text-5xl md:text-7xl font-light leading-snug mb-8 sm:mb-6">
           婚禮出席調查問卷
         </h1>
 
-        <p className="handwriting-cn text-sm sm:text-3x1 md:text-3xl text-gray-700 leading-relaxed px-2 sm:px-6 md:px-12 mb-8 sm:mb-1">
-          親愛的朋友您好，誠摯邀請您參加我們的婚禮！
+        <p className="handwriting-cn text-lg sm:text-3xl md:text-3xl text-gray-700 leading-relaxed px-2 sm:px-6 md:px-12 mb-6 sm:mb-1">
+          誠摯邀請您參加我們的婚禮！
 		  <br />
           為了方便安排座位與餐點，請協助填寫以下問卷。
         </p>
@@ -204,7 +204,7 @@ return (
 			value={formData.attendeesOther}
 			onChange={handleChange}
 			className={inputClass}
-			placeholder="例如：4 人"
+			placeholder="例如：4 "
 			min="1"
 			/>
 		</div>
@@ -221,7 +221,7 @@ return (
           <div>
             <label className={labelClass}>6. 您與新人的關係</label>
             <div className="grid gap-3 md:grid-cols-2">
-              {['新郎研究所同學','新郎大學同學','新郎高中同學','新郎國中同學','新郎國小同學','新郎必勝客同事','新娘朋朋', '其他'].map((item) => (
+              {['新郎研究所同學','新郎大學同學','新郎高中同學','新郎國中同學','新郎國小同學','新郎必勝客同事','新郎朋朋', '新娘朋朋'].map((item) => (
                 <label key={item} className="border rounded-2xl p-4 hover:border-rose-300 cursor-pointer flex items-center gap-3">
                   <input type="radio" name="relation" value={item} checked={formData.relation === item} onChange={handleChange} />
                   <span>{item}</span>
@@ -309,7 +309,7 @@ return (
 				value={(formData as any).childSeatOther || ""}
 				onChange={handleChange}
 				className={inputClass}
-				placeholder="請輸入實際需求數量（例如：2 張 / 3 張）"
+				placeholder="請輸入實際需求數量（例如：2 ）"
 			/>
 			</div>
 		  )}
