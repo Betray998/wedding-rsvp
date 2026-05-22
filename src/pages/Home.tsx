@@ -89,7 +89,7 @@ export default function Home() {
             我們要結婚了
           </h1>
 
-          <p className="text-base sm:text-lg md:text-xl handwriting-cn text-black mb-10 leading-relaxed px-12 sm:px-0">
+          <p className="text-lg sm:text-lg md:text-xl handwriting-cn text-black mb-10 leading-relaxed px-12 sm:px-0">
             誠摯邀請您參與我們人生中最重要的一天，
             期待與您一同見證幸福時刻。
           </p>
@@ -104,7 +104,8 @@ export default function Home() {
             </p>
 
             <p className="text-lg sm:text-2xl md:text-3xl handwriting-cn text-black leading-snug">
-              藏鮮閣 新竹縣竹北市文興路二段378號
+              藏鮮閣
+			  <br />新竹縣竹北市文興路二段378號
             </p>
           </div>
 
