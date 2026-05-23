@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Home() {
 	
@@ -89,7 +90,7 @@ export default function Home() {
             我們要結婚了
           </h1>
 
-          <p className="text-lg sm:text-lg md:text-xl handwriting-cn text-black mb-5 leading-relaxed px-12 sm:px-0">
+          <p className="text-base sm:text-xl md:text-2xl handwriting-cn text-black mb-5 leading-relaxed px-12 sm:px-0">
             誠摯邀請您參與我們人生中最重要的一天，<br />
 			期待與您一同見證幸福時刻。
           </p>
@@ -132,9 +133,11 @@ export default function Home() {
 			  🚗 交通指南
 			</a>
 
-            <button className="block w-full border bg-gray-800 py-3 sm:py-4 rounded-xl text-white text-sm sm:text-base">
-              📸 婚紗照（即將開放）
-            </button>
+            <a
+			  href="/gallery"
+			  className="block w-full border bg-gray-800 py-3 sm:py-4 rounded-xl text-white text-sm sm:text-base">
+              📸 婚紗藝廊
+            </a>
 
           </div>
 

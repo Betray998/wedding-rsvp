@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Traffic from "./pages/Traffic";
 import WeddingRSVPPage from "./App";
 import Success from "./pages/Success";
+import Gallery from "./pages/Gallery";
 import "./index.css";
 
 import { initMusic, unlockMusic, playMusic } from "./utils/musicPlayer";
@@ -43,6 +44,9 @@ function Root() {
 
         {/* 成功頁 */}
         <Route path="/success" element={<Success />} />
+		
+		{/*婚紗分享*/}
+		<Route path="/gallery" element={<Gallery />} />
       </Routes>
     </BrowserRouter>
   );
