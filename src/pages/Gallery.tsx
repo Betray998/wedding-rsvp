@@ -13,10 +13,11 @@ const images = Object.values(
 export default function Gallery() {
   const bookRef = useRef<any>(null);
   const navigate = useNavigate();
+  const FlipBook = HTMLFlipBook as any;
 
   return (
     <div className="min-h-screen bg-neutral-900 flex items-center justify-center">
-      <HTMLFlipBook
+      <FlipBook
         width={400}
         height={600}
         showCover={true}
@@ -101,7 +102,7 @@ export default function Gallery() {
             </div>
           </div>
         </div>
-      </HTMLFlipBook>
+      </FlipBook>
     </div>
   );
 }
