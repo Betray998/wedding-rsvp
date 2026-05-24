@@ -22,6 +22,13 @@ export default function Gallery() {
         height={600}
         showCover={true}
         ref={bookRef}
+        mobileScrollSupport={false}
+        maxShadowOpacity={0.9}
+        drawShadow={true}
+        flippingTime={1200}
+        usePortrait={true}
+        startZIndex={0}
+        autoSize={true}
       >
         {/* ================= 封面 ================= */}
         <div className="relative w-full h-full flex items-center justify-center bg-black">
@@ -47,7 +54,10 @@ export default function Gallery() {
 
         {/* ================= 照片頁 ================= */}
         {images.map((src, index) => (
-          <div key={index} className="relative w-full h-full bg-black">
+          <div
+            key={index}
+            className="relative w-full h-full bg-black overflow-hidden"
+          >
             <div className="absolute inset-0 flex items-center justify-center">
               <img
                 src={src}
@@ -55,6 +65,12 @@ export default function Gallery() {
                 className="max-w-full max-h-full object-contain"
               />
             </div>
+
+            {/* 書頁邊緣陰影 */}
+            <div className="absolute left-0 top-0 h-full w-3 bg-black/10 pointer-events-none" />
+
+            {/* 光澤 */}
+            <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-white/20 via-transparent to-black/15" />
           </div>
         ))}
 
