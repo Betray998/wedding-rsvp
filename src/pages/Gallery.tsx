@@ -40,15 +40,15 @@ export default function Gallery() {
           <div className="absolute inset-0 bg-black/40" />
 
           <div className="relative text-center text-white">
-            <div className="text-sm tracking-[0.3em] mb-3 opacity-80">
-              WEDDING ALBUM
+            <div className="relative text-center text-white mt-20 -translate-y-2">
+              LOVE ALBUM
             </div>
 
-            <h1 className="text-4xl handwriting-cn mb-4">
-              我們的故事
+            <h1 className="text-3xl handwriting-cn mb-2">
+              成成 ♥ 德德
             </h1>
 
-            <div className="text-lg opacity-90">♡ 2026 ♡</div>
+            <div className="text-lg opacity-90">♡ 2026.09.12 ♡</div>
           </div>
         </div>
 
@@ -89,12 +89,8 @@ export default function Gallery() {
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center text-white flex flex-col items-center gap-4">
               <h2 className="text-3xl handwriting-cn">
-                謝謝你看到這裡 ♡
+                Love never ends ♡
               </h2>
-
-              <p className="text-sm opacity-70">
-                希望你喜歡我們的故事
-              </p>
 
               <div className="flex flex-col gap-3 mt-2">
                 {/* 回封面 */}

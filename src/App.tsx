@@ -9,18 +9,19 @@ export default function WeddingRSVPPage() {
     mail: "",
     attendance: "",
     attendees: "",
-	attendeesOther: "",
+    attendeesOther: "",
     relation: "",
     meal: "",
     specialMeal: "",
-	children: "",
+    children: "",
     childSeat: "",
-	childSeatOther: "",
+    childSeatOther: "",
     blessing: "",
     note: "",
   });
 
   // ⭐⭐⭐ 正確位置：放在 component 裡 ⭐⭐⭐
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -37,25 +38,27 @@ export default function WeddingRSVPPage() {
         alert("請填寫姓名,電話和mail");
         return;
       }
-	  // ✅ 1. 先整理資料
-    const submitData = {
-      ...formData,
 
-      // 人數：如果選 other → 用輸入值
-      attendees:
-        formData.attendees === "other"
-          ? formData.attendeesOther
-          : formData.attendees,
+      setIsSubmitting(true);
 
-      // 兒童座椅：如果選其他 → 用輸入值
-      childSeat:
-        formData.childSeat === "其他"
-          ? formData.childSeatOther
-          : formData.childSeat,
+      // ✅ 1. 先整理資料
+      const submitData = {
+        ...formData,
+
+        attendees:
+          formData.attendees === "other"
+            ? formData.attendeesOther
+            : formData.attendees,
+
+        childSeat:
+          formData.childSeat === "其他"
+            ? formData.childSeatOther
+            : formData.childSeat,
       };
-	  // 🧪 debug（建議保留）
-		console.log("submitData:", submitData);
-		
+
+      // 🧪 debug（建議保留）
+      console.log("submitData:", submitData);
+
       await fetch(
         "https://script.google.com/macros/s/AKfycbzAfy0avs38kNvYw27ugXhbj7_2wq-m7cTPCKS2qLwITgM3Au13PmHznWxPZhlH6NC2/exec",
         {
@@ -64,8 +67,8 @@ export default function WeddingRSVPPage() {
           headers: {
             "Content-Type": "application/json",
           },
-		  body: JSON.stringify(submitData),
-		}
+          body: JSON.stringify(submitData),
+        }
       );
 
       window.location.href = "/success";
@@ -76,19 +79,20 @@ export default function WeddingRSVPPage() {
         mail: "",
         attendance: "",
         attendees: "",
-		attendeesOther: "",
+        attendeesOther: "",
         relation: "",
         meal: "",
         specialMeal: "",
-		children: "",
+        children: "",
         childSeat: "",
-		childSeatOther: "",
+        childSeatOther: "",
         blessing: "",
         note: "",
       });
     } catch (error) {
       console.error(error);
       alert("提交失敗，請稍後再試");
+      setIsSubmitting(false);
     }
   };
 
@@ -101,115 +105,128 @@ export default function WeddingRSVPPage() {
   const radioClass =
     "flex items-center gap-2 text-gray-700";
 
-return (
-  <div className="min-h-screen relative text-gray-900 overflow-x-hidden">
+  return (
+    <>
+      {/* ✅ loading overlay */}
+      {isSubmitting && (
+        <div className="fixed inset-0 z-[9999] bg-white/80 backdrop-blur-sm flex flex-col items-center justify-center">
 
-    {/* ✅ 背景（手機/桌機都置中穩定） */}
-    <div className="fixed inset-0 -z-10 overflow-hidden">
-	  <img
-      src="/images/F83459-0149.jpg"
-      className="w-full h-full object-cover object-[50%_25%]"
-	  />
+          <div className="text-6xl animate-pulse text-rose-300">
+			❤
+		  </div>
+		  <p className="mt-6 text-xl handwriting-cn">
+			正在為您傳遞回復與祝福...
+		  </p>
 
-	  <div className="absolute inset-0 bg-white/70" />
-	</div>
+          <p className="text-sm text-gray-500 mt-2">
+            請稍候片刻 ♡
+          </p>
+        </div>
+      )}
 
-    {/* Hero */}
-    <section className="relative overflow-hidden">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-24 text-center">
+      <div className="min-h-screen relative text-gray-900 overflow-x-hidden">
 
-        <p className="tracking-[0.25em] sm:tracking-[0.35em] text-rose-400 text-xs sm:text-sm mb-3 sm:mb-4">
-          WEDDING RSVP
-        </p>
+        {/* ✅ 背景（手機/桌機都置中穩定） */}
+        <div className="fixed inset-0 -z-10 overflow-hidden">
+          <img
+            src="/images/F83459-0149.jpg"
+            className="w-full h-full object-cover object-[50%_25%]"
+          />
+          <div className="absolute inset-0 bg-white/70" />
+        </div>
 
-        <h1 className="handwriting-cn text-4xl sm:text-5xl md:text-7xl font-light leading-snug mb-8 sm:mb-6">
-          婚禮出席調查問卷
-        </h1>
+        {/* Hero */}
+        <section className="relative overflow-hidden">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-24 text-center">
 
-        <p className="handwriting-cn text-lg sm:text-3xl md:text-3xl text-gray-700 leading-relaxed px-2 sm:px-6 md:px-12 mb-6 sm:mb-1">
-          誠摯邀請您參加我們的婚禮！
-		  <br />
-          為了方便安排座位與餐點，請協助填寫以下問卷。
-        </p>
+            <p className="tracking-[0.25em] sm:tracking-[0.35em] text-rose-400 text-xs sm:text-sm mb-3 sm:mb-4">
+              WEDDING RSVP
+            </p>
 
-      </div>
-    </section>
+            <h1 className="handwriting-cn text-4xl sm:text-5xl md:text-7xl font-light leading-snug mb-8 sm:mb-6">
+              婚禮出席調查問卷
+            </h1>
 
-      {/* Form */}
-      <main className="max-w-4xl mx-auto px-6 pb-20 space-y-8">
-        {/* Basic Info */}
-        <section className={sectionClass}>
-          <div>
-            <h2 className="text-2xl font-bold mb-1">基本資訊</h2>
-            <p className="text-gray-500 text-sm">請填寫聯絡與出席資訊</p>
-          </div>
+            <p className="handwriting-cn text-lg sm:text-3xl md:text-3xl text-gray-700 leading-relaxed px-2 sm:px-6 md:px-12 mb-6 sm:mb-1">
+              誠摯邀請您參加我們的婚禮！
+              <br />
+              為了方便安排座位與餐點，請協助填寫以下問卷。
+            </p>
 
-          <div>
-            <label className={labelClass}>1. 賓客姓名</label>
-            <input type="text" name="name" value={formData.name} onChange={handleChange} className={inputClass} placeholder="請輸入姓名(必填)" />
-          </div>
-
-          <div>
-            <label className={labelClass}>2. 聯絡電話</label>
-            <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className={inputClass} placeholder="請輸入聯絡電話(必填)" />
-          </div>
-		  
-		  <div>
-            <label className={labelClass}>3. 電子信箱</label>
-            <input type="tel" name="mail" value={formData.mail} onChange={handleChange} className={inputClass} placeholder="請輸入電子信箱(必填)" />
           </div>
         </section>
 
-        {/* Attendance */}
-        <section className={sectionClass}>
-          <div>
-            <h2 className="text-2xl font-bold mb-1">出席資訊</h2>
-            <p className="text-gray-500 text-sm">協助我們安排婚宴座位</p>
-          </div>
+        {/* Form */}
+        <main className="max-w-4xl mx-auto px-6 pb-20 space-y-8">
 
-          <div>
-            <label className={labelClass}>4. 是否出席婚宴？</label>
-            <div className="grid gap-3 md:grid-cols-3">
-              {['會出席', '無法出席'].map((item) => (
-                <label key={item} className="border rounded-2xl p-4 hover:border-rose-300 cursor-pointer flex items-center gap-3">
-                  <input type="radio" name="attendance" value={item} checked={formData.attendance === item} onChange={handleChange} />
-                  <span>{item}</span>
-                </label>
-              ))}
+          {/* Basic Info */}
+          <section className={sectionClass}>
+            <div>
+              <h2 className="text-2xl font-bold mb-1">基本資訊</h2>
+              <p className="text-gray-500 text-sm">請填寫聯絡與出席資訊</p>
             </div>
-          </div>
 
-          <div>
-			<label className={labelClass}>5. 出席人數</label>
-			<select
-			  name="attendees"
-			  value={formData.attendees}
-			  onChange={handleChange}
-			  className={inputClass}
-			>
-			  <option value="">請選擇</option>
-			  <option value="1">1 人</option>
-			  <option value="2">2 人</option>
-			  <option value="3">3 人</option>
-			  <option value="other">其他</option>
-			</select>
-		</div>
-        
-		{formData.attendees === "other" && (
-		<div>
-			<label className={labelClass}>請填寫實際出席人數</label>
-			<input
-			type="number"
-			name="attendeesOther"
-			value={formData.attendeesOther}
-			onChange={handleChange}
-			className={inputClass}
-			placeholder="例如：4 "
-			min="1"
-			/>
-		</div>
-		)}
-		</section>
+            <div>
+              <label className={labelClass}>1. 賓客姓名</label>
+              <input type="text" name="name" value={formData.name} onChange={handleChange} className={inputClass} placeholder="請輸入姓名(必填)" />
+            </div>
+
+            <div>
+              <label className={labelClass}>2. 聯絡電話</label>
+              <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className={inputClass} placeholder="請輸入聯絡電話(必填)" />
+            </div>
+
+            <div>
+              <label className={labelClass}>3. 電子信箱</label>
+              <input type="tel" name="mail" value={formData.mail} onChange={handleChange} className={inputClass} placeholder="請輸入電子信箱(必填)" />
+            </div>
+          </section>
+
+          {/* Attendance */}
+          <section className={sectionClass}>
+            <div>
+              <h2 className="text-2xl font-bold mb-1">出席資訊</h2>
+              <p className="text-gray-500 text-sm">協助我們安排婚宴座位</p>
+            </div>
+
+            <div>
+              <label className={labelClass}>4. 是否出席婚宴？</label>
+              <div className="grid gap-3 md:grid-cols-3">
+                {['會出席', '無法出席'].map((item) => (
+                  <label key={item} className="border rounded-2xl p-4 hover:border-rose-300 cursor-pointer flex items-center gap-3">
+                    <input type="radio" name="attendance" value={item} checked={formData.attendance === item} onChange={handleChange} />
+                    <span>{item}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <label className={labelClass}>5. 出席人數</label>
+              <select name="attendees" value={formData.attendees} onChange={handleChange} className={inputClass}>
+                <option value="">請選擇</option>
+                <option value="1">1 人</option>
+                <option value="2">2 人</option>
+                <option value="3">3 人</option>
+                <option value="other">其他</option>
+              </select>
+            </div>
+
+            {formData.attendees === "other" && (
+              <div>
+                <label className={labelClass}>請填寫實際出席人數</label>
+                <input
+                  type="number"
+                  name="attendeesOther"
+                  value={formData.attendeesOther}
+                  onChange={handleChange}
+                  className={inputClass}
+                  placeholder="例如：4 "
+                  min="1"
+                />
+              </div>
+            )}
+          </section>
 
         {/* Relationship */}
         <section className={sectionClass}>
@@ -349,19 +366,22 @@ return (
         </section>
 
         {/* Submit */}
-        <section className="text-center pt-4">
-          <button
-            onClick={handleSubmit}
-            className="px-10 py-4 rounded-full bg-gray-900 text-white text-lg font-medium shadow-lg hover:scale-105 transition-transform"
-          >
-            提交問卷
-          </button>
+          <section className="text-center pt-4">
+            <button
+              onClick={handleSubmit}
+              disabled={isSubmitting}
+              className="px-10 py-4 rounded-full bg-gray-900 text-white text-lg font-medium shadow-lg hover:scale-105 transition-transform disabled:opacity-60"
+            >
+              提交問卷
+            </button>
 
-          <p className="text-sm text-gray-500 mt-5">
-            感謝您的填寫與祝福，期待在婚禮當天與您相見 ✨
-          </p>
-        </section>
-      </main>
-    </div>
+            <p className="text-sm text-gray-500 mt-5">
+              感謝您的填寫與祝福，期待在婚禮當天與您相見 ✨
+            </p>
+          </section>
+
+        </main>
+      </div>
+    </>
   );
 }
