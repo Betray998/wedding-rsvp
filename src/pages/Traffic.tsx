@@ -20,9 +20,9 @@ export default function Traffic() {
 
           {/* 標題 */}
           <div className="mb-8">
-            <p className="text-xs tracking-[0.3em] text-gray-500 mb-3">
+            {/*<p className="text-xs tracking-[0.3em] text-gray-500 mb-3">
               TRAFFIC GUIDE
-            </p>
+            </p>*/}
 
             <h1 className="text-5xl sm:text-4xl md:text-6xl handwriting-cn text-black mb-2 leading-tight">
               交通指南

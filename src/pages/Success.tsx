@@ -19,9 +19,9 @@ export default function Success() {
 
         <div className="max-w-xl w-full text-center">
 
-          <p className="tracking-[0.35em] text-gray-500 text-sm mb-4">
+		  {/*<p className="tracking-[0.35em] text-gray-500 text-sm mb-4">
             WEDDING RSVP
-          </p>
+          </p>*/}
 
           <h1 className="text-5xl sm:text-6xl md:text-7xl handwriting-cn text-black mb-6 leading-snug">
             感謝您的填寫
@@ -33,26 +33,12 @@ export default function Success() {
             期待在婚禮當天與您相見 ✨
           </p>
 
-          <div className="bg-white/70 backdrop-blur rounded-3xl shadow-lg border border-white/50 p-8">
-
-            <div className="text-pink-200 text-7xl mb-4">
-			  ❤
-			</div>
-
-            <p className="text-gray-700 leading-relaxed mb-8">
-              您的資料已成功送出，
-              <br />
-              感謝您的祝福。
-            </p>
-
             <Link
               to="/"
               className="inline-block bg-gray-800 text-white px-10 py-4 rounded-xl hover:bg-gray-700 transition"
             >
               返回首頁
             </Link>
-
-          </div>
 
         </div>
 

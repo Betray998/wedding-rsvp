@@ -114,13 +114,11 @@ export default function WeddingRSVPPage() {
           <div className="text-6xl animate-pulse text-rose-300">
 			❤
 		  </div>
-		  <p className="mt-6 text-xl handwriting-cn">
-			正在為您傳遞回復與祝福...
+		  <p className="mt-6 text-xl handwriting-cn text-center">
+			正在為您傳遞回復與祝福...<br />
+			請稍候片刻 ♡
 		  </p>
 
-          <p className="text-sm text-gray-500 mt-2">
-            請稍候片刻 ♡
-          </p>
         </div>
       )}
 
@@ -139,9 +137,9 @@ export default function WeddingRSVPPage() {
         <section className="relative overflow-hidden">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-24 text-center">
 
-            <p className="tracking-[0.25em] sm:tracking-[0.35em] text-rose-400 text-xs sm:text-sm mb-3 sm:mb-4">
+            {/*<p className="tracking-[0.25em] sm:tracking-[0.35em] text-rose-400 text-xs sm:text-sm mb-3 sm:mb-4">
               WEDDING RSVP
-            </p>
+            </p>*/}
 
             <h1 className="handwriting-cn text-4xl sm:text-5xl md:text-7xl font-light leading-snug mb-8 sm:mb-6">
               婚禮出席調查問卷

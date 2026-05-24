@@ -40,7 +40,7 @@ export default function Gallery() {
           <div className="absolute inset-0 bg-black/40" />
 
           <div className="relative text-center text-white">
-            <div className="relative text-center text-white mt-20 -translate-y-2">
+            <div className="relative text-center text-white mt-26 -translate-y-2">
               LOVE ALBUM
             </div>
 
