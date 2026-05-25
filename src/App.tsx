@@ -1,8 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+
 //import Countdown from "./components/Countdown";
 //import QRCodeShare from "./components/QRCodeShare";
 
 export default function WeddingRSVPPage() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -71,7 +75,8 @@ export default function WeddingRSVPPage() {
         }
       );
 
-      window.location.href = "/success";
+      {/*網頁會重新載入 音樂會重播// window.location.href = "/success";*/}
+	  navigate("/success");
 
       setFormData({
         name: "",

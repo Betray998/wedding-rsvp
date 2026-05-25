@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Home() {
 	
@@ -110,33 +111,40 @@ export default function Home() {
           </div>
 
           <div className="space-y-3 sm:space-y-4">
-			<a
-			  href="/rsvp"
+		  {/*造成重新載入//<a
+			  href="/rsvp"*/}
+			<Link
+			  to="/rsvp"
 			  className="block bg-gray-800 text-white py-3 sm:py-4 rounded-xl hover:bg-gray-700 transition text-sm sm:text-base"
 			>
 			  💌 出席調查
-			</a>
+			</Link>
+			{/*</a*/}
 
             <a
-              href="https://maps.app.goo.gl/WoNAN12mBQn1tGLU8"
+			  href="/https://maps.app.goo.gl/WoNAN12mBQn1tGLU8"
               target="_blank"
               className="block bg-gray-800 text-white py-3 sm:py-4 rounded-xl hover:bg-gray-700 transition text-sm sm:text-base"
             >
               📍 宴客地點
             </a>
 			
-			<a
-			  href="/traffic"
+		  {/*造成重新載入//<a
+			  href="/traffic"*/}
+			<Link
+			  to="/traffic"
 			  className="block bg-gray-800 text-white py-3 sm:py-4 rounded-xl hover:bg-gray-700 transition text-sm sm:text-base"
 			>
 			  🚗 交通指南
-			</a>
+			</Link>
 
-            <a
-			  href="/gallery"
+		  {/*造成重新載入//<a
+			  href="/gallery"*/}
+			<Link
+			  to="/gallery"
 			  className="block w-full border bg-gray-800 py-3 sm:py-4 rounded-xl text-white text-sm sm:text-base">
               📸 婚紗藝廊
-            </a>
+            </Link>
 
           </div>
 

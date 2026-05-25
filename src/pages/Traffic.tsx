@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Traffic() {
   return (
     <div className="relative min-h-screen overflow-hidden text-black">
@@ -99,12 +101,12 @@ export default function Traffic() {
 
           {/* 按鈕（跟首頁一致） */}
           <div className="space-y-3">
-            <a
-              href="/"
+            <Link
+              to="/"
               className="block bg-gray-800 text-white py-4 rounded-xl hover:bg-gray-700 transition"
             >
               ← 返回首頁
-            </a>
+            </Link>
 
           </div>
 
