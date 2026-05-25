@@ -122,7 +122,7 @@ export default function Home() {
 			{/*</a*/}
 
             <a
-			  href="/https://maps.app.goo.gl/WoNAN12mBQn1tGLU8"
+			  href="https://maps.app.goo.gl/WoNAN12mBQn1tGLU8"
               target="_blank"
               className="block bg-gray-800 text-white py-3 sm:py-4 rounded-xl hover:bg-gray-700 transition text-sm sm:text-base"
             >
