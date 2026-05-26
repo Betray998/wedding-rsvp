@@ -19,6 +19,7 @@ export default function Gallery() {
   const [currentPage, setCurrentPage] = useState(0);
 
   const totalPages = images.length + 2;
+  const isMobile = window.innerWidth < 768;
 
   // ✅ 只 preload 前 10 張
   useEffect(() => {
@@ -96,8 +97,10 @@ export default function Gallery() {
     <div className="min-h-screen bg-neutral-900 flex items-center justify-center relative">
 
       <FlipBook
-        width={400}
-        height={600}
+        //width={400}
+        //height={600}
+		width={isMobile ? 320 : 500}
+		height={isMobile ? 480 : 700}
         showCover={true}
         ref={bookRef}
         mobileScrollSupport={false}
