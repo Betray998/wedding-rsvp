@@ -99,8 +99,8 @@ export default function Gallery() {
       <FlipBook
         //width={400}
         //height={600}
-		width={isMobile ? 320 : 500}
-		height={isMobile ? 480 : 700}
+		width={isMobile ? 320 : 400}
+		height={isMobile ? 480 : 600}
         showCover={true}
         ref={bookRef}
         mobileScrollSupport={false}
@@ -144,7 +144,7 @@ export default function Gallery() {
               <img
                 src={src}
                 alt={`wedding-${index}`}
-                className="max-w-full max-h-full object-contain"
+                className="max-w-full max-h-full object-cover"
               />
             </div>
 
@@ -197,7 +197,7 @@ export default function Gallery() {
       </FlipBook>
 
       {/* ⭐ 相簿外返回首頁按鈕 */}
-      {currentPage !== ((totalPages - 2) || (totalPages - 1)) && (
+      {currentPage !== images.length && currentPage !== images.length + 1 && (
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-50">
           <button
             onClick={() => navigate("/")}
