@@ -4,7 +4,7 @@ import { useRef } from "react";
 
 // 自動抓取資料夾內所有 jpg/png/jpeg
 const images = Object.values(
-  import.meta.glob("../assets/gallery/*.{jpg,jpeg,png,JPG,JPEG,PNG}", {
+  import.meta.glob("../assets/gallery_resize/*.{jpg,jpeg,png,JPG,JPEG,PNG,webp}", {
     eager: true,
     import: "default",
   })
