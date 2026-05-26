@@ -18,7 +18,6 @@ export default function Gallery() {
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(0);
 
-  const totalPages = images.length + 2;
   const isMobile = window.innerWidth < 768;
 
   // ✅ 只 preload 前 10 張
