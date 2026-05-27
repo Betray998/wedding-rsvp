@@ -93,13 +93,13 @@ export default function Gallery() {
   }
 
   return (
-    <div className="min-h-screen bg-neutral-900 flex items-center justify-center relative">
+    <div className="h-screen overflow-hidden bg-neutral-900 flex flex-col items-center justify-center relative">
 
       <FlipBook
         //width={400}
         //height={600}
 		width={isMobile ? 320 : 400}
-		height={isMobile ? 480 : 600}
+		height={isMobile ? 520 : 600}
         showCover={true}
         ref={bookRef}
         mobileScrollSupport={false}
@@ -197,7 +197,7 @@ export default function Gallery() {
 
       {/* ⭐ 相簿外返回首頁按鈕 */}
       {currentPage !== images.length && currentPage !== images.length + 1 && (
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-50">
+        <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-50">
           <button
             onClick={() => navigate("/")}
             className="px-6 py-3 rounded-full border border-white text-white text-sm bg-black/40 backdrop-blur-md hover:bg-white hover:text-black transition"
