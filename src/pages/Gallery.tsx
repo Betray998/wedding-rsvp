@@ -18,7 +18,7 @@ export default function Gallery() {
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(0);
 
-  const isMobile = window.innerWidth < 768;
+  //const isMobile = window.innerWidth < 768;
 
   // ✅ 只 preload 前 10 張
   useEffect(() => {
