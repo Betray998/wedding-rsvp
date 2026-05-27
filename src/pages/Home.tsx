@@ -82,15 +82,19 @@ export default function Home() {
           </div>
 
           {/* 以下全部保持你原本內容 */}
-          <p className="text-4xl sm:text-4xl md:text-6xl handwriting text-black mb-2 leading-tight">
+          <p className="text-3xl sm:text-3xl md:text-4xl handwriting text-black mb-2 leading-tight">
             Wedding Invitation
           </p>
 
-          <h1 className="text-6xl sm:text-6xl md:text-7xl handwriting-cn text-black mb-5 leading-snug">
+          <h1 className="text-4xl sm:text-4xl md:text-5xl handwriting-cn text-black mb-1 leading-snug">
+            全成 & 德璇
+          </h1>
+		  
+		  <h1 className="text-5xl sm:text-5xl md:text-6xl handwriting-cn text-black mb-1 leading-snug">
             我們要結婚了
           </h1>
 
-          <p className="text-base sm:text-xl md:text-2xl handwriting-cn text-black mb-5 leading-relaxed px-12 sm:px-0">
+          <p className="text-base sm:text-xl md:text-2xl handwriting-cn text-black mb-1 leading-relaxed px-12 sm:px-0">
             誠摯邀請您參與我們人生中最重要的一天，<br />
 			期待與您一同見證幸福時刻。
           </p>
